@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main()
+{
+	ofstream out("New.txt");
+	out << "To be encrypted" << endl;
+	out.close();
+
+	char c=0,a=0;
+	int j=0;
+	char arr[26]{};
+	for (a = 'a';a <= 'z';a++)
+	{
+		arr[j] = a;
+		cout << a;
+		j++;
+		
+	}
+	ifstream in("New.txt");
+
+	while (in.get(c))
+	{
+		c += 100;
+		c = c % 26;
+		for (int i=0;i < 26;i++)
+		{
+			if (j == c)
+				c = arr[i];
+				cout << c;
+		}
+		//ofstream out("Enew.txt",ios::app|ios::binary);
+		//out << c;
+	}
+	out.close();
+}
